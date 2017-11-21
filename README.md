@@ -3,12 +3,12 @@
 ## 1. Run The Vault
 To start the vault execute:
 
-    **_docker/vault/start_vault.sh_**
+    `cd docker/vault`
+
+    `./start_vault.sh_`
 
 Then add our config value to the vault:
 
-    `cd docker/vault`
-    
     `./add_value.sh`
     
 Check the IP of the vault by executing:
