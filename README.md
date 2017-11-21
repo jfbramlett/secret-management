@@ -14,7 +14,7 @@ Check the IP of the vault by executing:
 
 Update the vault IP in docker/spring-config/config/application.yml.
 
-# 2. Start Spring Cloud Config Server*
+# 2. Start Spring Cloud Config Server
 To start the spring cloud config server execute:
     docker/spring-config/start_spring-config.sh
     
