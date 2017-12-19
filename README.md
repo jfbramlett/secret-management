@@ -1,3 +1,7 @@
+This examples uses the Vault directly to help configure the app. Primary app configuration lives
+in the app (in a local application.yml) with a value pulled from the Vault which is accessed
+directly via the app.
+
 # How to run the app
 
 ## 1. Run The Vault
