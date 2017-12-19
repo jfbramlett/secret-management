@@ -17,16 +17,10 @@ Check the IP of the vault by executing:
     
 (the container id can be found by running docker ps)
 
-Update the vault IP in docker/spring-config/config/application.yml.
+Update the vault IP src/main/resources/bootstrap.yml (spring.cloud.vault.port)
 
-## 2. Start Spring Cloud Config Server
-To start the spring cloud config server execute:
-
-    cd docker/spring-config
     
-    ./start_spring-config.sh
-    
-## 3. Start the App
+## 2. Start the App
 Start the Spring Boot app
 
 ## 4. Test the App

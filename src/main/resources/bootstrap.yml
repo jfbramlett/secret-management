@@ -1,13 +1,15 @@
 spring:
   cloud:
-    config:
-      uri: http://localhost:8888
+    vault:
+      host: localhost
+      port: 8200
+      scheme: http
       token: abc123
   application:
     name: sample
 
 logging:
   level:
-    org.springframework: DEBUG
+    org.springframework: INFO
 
 
