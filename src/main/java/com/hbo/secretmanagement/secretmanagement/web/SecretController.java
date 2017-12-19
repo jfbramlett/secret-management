@@ -12,9 +12,18 @@ public class SecretController {
 
     @Value("${secret.management.value}") private String secret;
 
+    @Value("${custom.config.from.vault}") private String anotherSecret;
+
     @ResponseBody
     @RequestMapping(value = "secret", method= RequestMethod.GET, produces = "application/json")
     public SecretDto secret() {
         return new SecretDto(secret);
     }
+
+    @ResponseBody
+    @RequestMapping(value = "secret2", method= RequestMethod.GET, produces = "application/json")
+    public SecretDto secret2() {
+        return new SecretDto(anotherSecret);
+    }
+
 }

@@ -1,3 +1,9 @@
 server:
   context-path: /sampleserver/v1
   port: 8090
+
+
+custom:
+  config:
+    from:
+      vault: ${secret.management.value}
