@@ -23,7 +23,7 @@ Update the vault IP src/main/resources/bootstrap.yml (spring.cloud.vault.port)
 ## 2. Start the App
 Start the Spring Boot app
 
-## 4. Test the App
+## 3. Test the App
 Open a browser and navigate to: 
 
     http://localhost:8090/sampleserver/v1/secret
