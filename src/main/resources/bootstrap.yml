@@ -5,11 +5,17 @@ spring:
       port: 8200
       scheme: http
       token: abc123
+      mongodb:
+        enabled: true
+        role: readonly
+        backend: database
+        username-property: mongodb.username
+        password-property: mongodb.password
   application:
     name: sample
 
 logging:
   level:
-    org.springframework: INFO
+    org.springframework: DEBUG
 
 
