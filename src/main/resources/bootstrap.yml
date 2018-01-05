@@ -7,7 +7,7 @@ spring:
       token: abc123
       mongodb:
         enabled: true
-        role: readonly
+        role: vs-user
         backend: database
         username-property: mongodb.username
         password-property: mongodb.password
