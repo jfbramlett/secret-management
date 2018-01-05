@@ -11,6 +11,9 @@ db.auth("mongo", "mongopwd")
 -- create our database
 use vault-sample
 
+-- create an admin user for this database
+db.createUser({user: "vaultSampleAdmin", pwd: "password", roles: ["readWrite", "dbOwner"]})
+
 -- add a collection
 db.albums.save({title:"2112", artist:"Rush", year: 1976})
 
@@ -26,13 +29,19 @@ docker exec -i -t <container id> /bin/ash
 
 -- export the keys needed to config the vault (done in shell)
 export VAULT_TOKEN=abc123
-export VAULT_ADDR=http://127.0.0.1:8200
+export VAULT_ADDR=http://127.0.0.2:8200 (this needs to be the ip address for the vault)
 
 -- mount database plugin
 vault mount database
 
 -- configure our mongodb plugin
-vault write database/config/mongodb plugin_name=mongodb-database-plugin allowed_roles="readonly" connection_url="mongodb://mongo:mongopwd@172.17.0.3:27017/admin"
+-- use the use account that can administer our vault-sample database
+vault write database/config/mongodb-vault-sample plugin_name=mongodb-database-plugin allowed_roles="vs-user" connection_url="mongodb://vaultSampleAdmin:password@172.17.0.3:27017/vault-sample"
 
 -- now define our role
-vault write database/roles/readonly db_name=mongodb creation_statements='{ "db": "admin", "roles": [{ "role": "readWrite" }, {"role": "read", "db": "vault-sample"}] }' default_ttl="1h" max_ttl="24h"
+vault write database/roles/vs-user db_name=mongodb-vault-sample creation_statements='{ "db": "vault-sample", "roles": [{ "role": "readWrite" }] }' default_ttl="1h" max_ttl="24h"
+
+
+-- generate a new account by hand
+vault read database/creds/vs-user
+
