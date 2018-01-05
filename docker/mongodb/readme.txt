@@ -46,3 +46,14 @@ vault write database/roles/vs-user db_name=mongodb-vault-sample creation_stateme
 -- generate a new account by hand
 vault read database/creds/vs-user
 
+-- to revoke all vault db accounts
+vault revoke -prefix database/
+
+-- to revoke all db accounts of a given role type
+vault revoke -prefix database/creds/vs-user
+
+-- to revoke a single db account need lease id (given in logs from Renewing lease)
+vault revoke database/creds/vs-user/c37dea41-1228-595a-07b0-d4577699b68a
+
+
+

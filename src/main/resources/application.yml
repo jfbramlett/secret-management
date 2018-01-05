@@ -13,3 +13,12 @@ spring:
   data:
     mongodb:
       uri: mongodb://${mongodb.username}:${mongodb.password}@localhost:27017/vault-sample
+
+endpoints:
+  actuator:
+    sensitive: false
+
+management:
+  security:
+    enabled: false
+
