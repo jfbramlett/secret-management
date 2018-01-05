@@ -39,7 +39,8 @@ vault mount database
 vault write database/config/mongodb-vault-sample plugin_name=mongodb-database-plugin allowed_roles="vs-user" connection_url="mongodb://vaultSampleAdmin:password@172.17.0.3:27017/vault-sample"
 
 -- now define our role
-vault write database/roles/vs-user db_name=mongodb-vault-sample creation_statements='{ "db": "vault-sample", "roles": [{ "role": "readWrite" }] }' default_ttl="1h" max_ttl="24h"
+-- ttl and max_ttl can also be set as a string using format "1h", "24h"
+vault write database/roles/vs-user db_name=mongodb-vault-sample creation_statements='{ "db": "vault-sample", "roles": [{ "role": "readWrite" }] }' revocation_statements='{"db" : "vault-sample"}' default_ttl=300 max_ttl=900
 
 
 -- generate a new account by hand
