@@ -5,7 +5,7 @@ To start the vault execute:
 
     cd docker/vault
 
-    ./start_vault.sh_
+    ./start_vault.sh
 
 Then add our config value to the vault:
 
@@ -19,17 +19,10 @@ Check the IP of the vault by executing:
 
 Update the vault IP in docker/spring-config/config/application.yml.
 
-## 2. Start Spring Cloud Config Server
-To start the spring cloud config server execute:
-
-    cd docker/spring-config
-    
-    ./start_spring-config.sh
-    
-## 3. Start the App
+## 2. Start the App
 Start the Spring Boot app
 
-## 4. Test the App
+## 3. Test the App
 Open a browser and navigate to: 
 
     http://localhost:8090/sampleserver/v1/secret
